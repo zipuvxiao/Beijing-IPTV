@@ -1,0 +1,41 @@
+name: Replace Strings
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+
+    - name: Run replace script
+      run: |
+        python scripts/replace.py
+          
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add IPTV-UDPXY.m3u IPTV-MSDLITE.m3u
+        git commit -m "Created and modified IPTV-UDPXY.m3u and IPTV-MSDLITE.m3u from IPTV-Unicom.m3u"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
