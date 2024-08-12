@@ -16,9 +16,9 @@ if __name__ == "__main__":
     # 创建并修改 IPTV-UDPXY.m3u
     new_file_path_udpxy = 'IPTV-UDPXY.m3u'
     shutil.copyfile(original_file_path, new_file_path_udpxy)
-    replace_in_file(new_file_path_udpxy, '192.168.123.1:23234', 'udpxy.iptv.ikunchina.com:2112')
+    replace_in_file(new_file_path_udpxy, '192.168.123.1:23234', 'gfsg.bj.cn.ikunchina.com:2112')
     
     # 创建并修改 IPTV-MSDLITE.m3u
     new_file_path_msdlite = 'IPTV-MSDLITE.m3u'
     shutil.copyfile(original_file_path, new_file_path_msdlite)
-    replace_in_file(new_file_path_msdlite, '192.168.123.1:23234', 'msdlite.iptv.ikunchina.com:7088')
+    replace_in_file(new_file_path_msdlite, '192.168.123.1:23234', 'gfsg.bj.cn.ikunchina.com:7088')
